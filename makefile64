@@ -1,0 +1,32 @@
+CC=g++
+CFLAGS=-c -m64 -O3 -Wall -static
+all: knn+
+
+knn+: knn+.o apstring.o set.o core.o dataset.o qsar.o feature_alg.o knn.o
+	$(CC) knn+.o apstring.o set.o core.o dataset.o qsar.o feature_alg.o knn.o -m64 -o knn+64
+
+apstring.o: apstring.cpp
+	$(CC) $(CFLAGS) apstring.cpp
+set.o:
+	$(CC) $(CFLAGS) set.cpp
+
+core.o: core.cpp
+	$(CC) $(CFLAGS) core.cpp
+
+dataset.o: dataset.cpp
+	$(CC) $(CFLAGS) dataset.cpp
+
+qsar.o: qsar.cpp
+	$(CC) $(CFLAGS) qsar.cpp
+
+feature_alg.o: feature_alg.cpp
+	$(CC) $(CFLAGS) feature_alg.cpp
+
+knn.o: knn.cpp
+	$(CC) $(CFLAGS) knn.cpp
+
+knn+.o: knn+.cpp
+	$(CC) $(CFLAGS) knn+.cpp
+
+clean:
+	rm -rf *.o
