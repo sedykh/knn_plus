@@ -43,6 +43,9 @@ CCR < Accuracy if majority class is better predicted than minor one
 
 //---------------------------------------------------------------------
 Versions History:
+3.0
+May 8 2014				default start temperature for Simulated annealing changed to 0K instead of 100K (more efficient)
+
 2.9
 June 8 2013				post-optimization mode was expanded to include SA method
 
@@ -230,8 +233,8 @@ July 13 2009			- SA-scan of dimensions is made by flexible increment (def. 2)
 #include "knn.h"
 #include "feature_alg.h"
 
-#define Version		"2.9"
-#define VerDate		"2013"
+#define Version		"3.0"
+#define VerDate		"2014"
 
 #define SUBSEP		"@"
 #define COMMENT		"#"
@@ -349,7 +352,7 @@ REALNUM_TYPE GA_SIZE_ADJ = 0.1;	//basis for the GA score size-related adjustemen
  REALNUM_TYPE SA_MUTATION_RATE_PER_GENE = 0.2;	//probability of mutation per gene of solution
  UNSIGNED_4B_TYPE SA_N_TRIALS = 100;			//number of mutation trials to do before changing temperature
  bool SA_FULL_ITER = false;						//mode to continue with trials after accepted mutation
- REALNUM_TYPE SA_T_0 = 2, SA_T_END = -5, SA_K =  0.75, SA_T_CONV = -2;
+ REALNUM_TYPE SA_T_0 = 0, SA_T_END = -5, SA_K =  0.75, SA_T_CONV = -2;
 // --------------------------------------------------------------------//
 
 //----/----------   parameters for the Ant Colony only ----------/-----//
